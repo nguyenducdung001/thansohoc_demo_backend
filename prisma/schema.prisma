@@ -1,0 +1,21 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  tai_khoan       Int    @id @default(autoincrement())
+  ho_ten          String @db.VarChar(255)
+  email           String @unique(map: "email") @db.VarChar(255)
+  so_dt           String @unique(map: "so_dt") @db.VarChar(255)
+  mat_khau        String @db.VarChar(255)
+  loai_nguoi_dung String @db.VarChar(255)
+}
+
+
+// yarn prisma generate
+// yarn prisma db pull
